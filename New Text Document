@@ -1,0 +1,17 @@
+#!/bin/bash
+FILE=/var/iot/channels/KdG
+TOPIC=CityOfIdeas
+CLIENT_ID=Team0
+SERVER=35.190.206.91
+PORT=1883
+USERNAME=team0
+PASSWD=azerty123
+for COUNT in `seq 45`
+do
+if [ -f $FILE ]
+then
+mosquitto_pub -h $SERVER -p $PORT -u $USERNAME -P $PASSWD -i $CLIENT_ID -t $TOPIC -f $FILE
+rm $FILE
+fi
+sleep 1
+done
